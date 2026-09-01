@@ -1,0 +1,9 @@
+# OS
+.DS_Store
+
+# tooling
+node_modules/
+.vercel
+
+# temp
+*.log
