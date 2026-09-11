@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://elvira-landing.vercel.app/sitemap.xml
+Sitemap: https://klimanova-inside.ru/sitemap.xml

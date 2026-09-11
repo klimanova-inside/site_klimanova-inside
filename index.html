@@ -4,37 +4,38 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Эльвира Климанова — персональный коучинг · выход в свой масштаб</title>
-<meta name="description" content="Помогаю разобраться, почему вы делаете много, но всё ещё не вышли в желаемый масштаб. За 60 минут находим и прорабатываем паттерн, который держит вас на потолке.">
-<link rel="canonical" href="https://elvira-landing.vercel.app/">
+<meta name="description" content="Персональный коучинг Эльвиры Климановой. За 60 минут находим и прорабатываем паттерн мышления, который держит вас на потолке и не даёт выйти в свой масштаб.">
+<link rel="canonical" href="https://klimanova-inside.ru/">
 <meta name="theme-color" content="#F5F1E9">
-<meta name="robots" content="index, follow">
 <meta name="author" content="Эльвира Климанова">
 
 <!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ru_RU">
-<meta property="og:site_name" content="Эльвира · Персональный коучинг">
+<meta property="og:site_name" content="Эльвира Климанова · Персональный коучинг">
 <meta property="og:title" content="Эльвира Климанова — персональный коучинг · выход в свой масштаб">
 <meta property="og:description" content="Помогаю разобраться, почему вы делаете много, но всё ещё не вышли в желаемый масштаб. За 60 минут находим паттерн, который держит вас на потолке.">
-<meta property="og:url" content="https://elvira-landing.vercel.app/">
-<meta property="og:image" content="https://elvira-landing.vercel.app/assets/og.jpg">
+<meta property="og:url" content="https://klimanova-inside.ru/">
+<meta property="og:image" content="https://klimanova-inside.ru/assets/og.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Эльвира — персональный коуч">
+<meta property="og:image:alt" content="Эльвира Климанова — персональный коуч">
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Эльвира Климанова — персональный коучинг">
 <meta name="twitter:description" content="Помогаю разобраться, почему вы делаете много, но всё ещё не вышли в желаемый масштаб.">
-<meta name="twitter:image" content="https://elvira-landing.vercel.app/assets/og.jpg">
+<meta name="twitter:image" content="https://klimanova-inside.ru/assets/og.jpg">
+<meta name="twitter:image:alt" content="Эльвира Климанова — персональный коуч">
 
 <!-- Icons -->
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 
+<!-- Fonts: only the weights actually used on the page -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Montserrat:wght@300;400;500;600&family=Marck+Script&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,500&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 /* ============ TOKENS ============ */
@@ -45,19 +46,17 @@
   --sand-deep:#E0D5C2;
   --ink:#231F1A;        /* text near-black warm */
   --ink-soft:#4A433B;
-  --muted:#8C8377;      /* secondary text */
+  --muted:#6B6357;      /* secondary text — ≥4.5:1 on ivory/paper/sand */
   --espresso:#211D18;   /* dark section */
-  --espresso-2:#2B251F;
-  --brass:#A9803F;      /* accent */
-  --brass-2:#C29A57;
+  --brass:#A9803F;      /* accent: lines, large type, decorations */
+  --brass-ink:#85622C;  /* accent for small text and text-on-brass — ≥4.5:1 */
+  --brass-2:#C29A57;    /* accent on dark backgrounds */
   --brass-soft:#BFA173;
-  --olive:#767659;
   --line:#DFD6C6;
   --line-dark:rgba(255,255,255,.12);
 
   --serif:'Playfair Display', Georgia, serif;
   --sans:'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
-  --script:'Marck Script', cursive;
   --ease:cubic-bezier(.2,.7,.2,1);
 
   --wrap:1200px;
@@ -65,6 +64,7 @@
 }
 
 *{box-sizing:border-box;margin:0;padding:0}
+[hidden]{display:none!important}
 html{scroll-behavior:smooth}
 body{
   font-family:var(--sans);
@@ -75,9 +75,12 @@ body{
   -webkit-font-smoothing:antialiased;
   overflow-x:hidden;
 }
+body.menu-open{overflow:hidden}
 img{max-width:100%;display:block}
-.hero-figure picture,.cta-photo picture{display:contents}
 a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--brass);outline-offset:3px}
+.skip{position:absolute;left:16px;top:-100px;z-index:100;background:var(--ink);color:var(--ivory);padding:12px 18px;border-radius:2px;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase}
+.skip:focus{top:16px}
 
 /* ============ HELPERS ============ */
 .wrap{max-width:var(--wrap);margin:0 auto;padding-left:var(--pad);padding-right:var(--pad)}
@@ -87,7 +90,7 @@ a{color:inherit;text-decoration:none}
   font-weight:600;
   letter-spacing:.32em;
   text-transform:uppercase;
-  color:var(--brass);
+  color:var(--brass-ink);
   display:inline-flex;
   align-items:center;
   gap:14px;
@@ -95,9 +98,8 @@ a{color:inherit;text-decoration:none}
 .eyebrow::before{content:"";width:34px;height:1px;background:var(--brass);opacity:.7}
 .eyebrow.center{justify-content:center}
 .eyebrow.center::after{content:"";width:34px;height:1px;background:var(--brass);opacity:.7}
-.serif{font-family:var(--serif)}
 .ital{font-style:italic;color:var(--brass)}
-.reveal{opacity:0;transform:translateY(26px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1)}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .9s ease,transform .9s var(--ease)}
 .reveal.in{opacity:1;transform:none}
 
 h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.08;letter-spacing:-.01em}
@@ -114,7 +116,7 @@ h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.08;letter-spacin
 .btn:hover::after{left:150%}
 .btn > *{position:relative;z-index:1}
 .btn-primary{background:var(--ink);color:var(--ivory)}
-.btn-primary:hover{background:var(--brass);color:#fff;transform:translateY(-2px)}
+.btn-primary:hover{background:var(--brass-ink);color:#fff;transform:translateY(-2px)}
 .btn-ghost{background:transparent;color:var(--ink);border-color:var(--ink)}
 .btn-ghost:hover{background:var(--ink);color:var(--ivory)}
 .btn .arr{transition:transform .35s ease}
@@ -144,9 +146,9 @@ header.on-dark .nav>.btn-primary{background:#F3ECDE;color:#231F1A}
 .menu{display:flex;align-items:center;gap:clamp(20px,1.9vw,30px);margin-left:auto;margin-right:auto}
 .menu a{position:relative;white-space:nowrap;font-size:.74rem;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-soft);font-weight:500;transition:color .25s}
 .menu a::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:1px;background:var(--brass);transition:width .3s var(--ease)}
-.menu a:hover{color:var(--brass)}
+.menu a:hover{color:var(--brass-ink)}
 .menu a:hover::after{width:100%}
-.nav .btn{padding:14px 28px}
+.nav .btn{padding:13px 24px}
 .burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px}
 .burger span{width:24px;height:2px;background:var(--ink);transition:.3s}
 
@@ -159,13 +161,12 @@ header.on-dark .nav>.btn-primary{background:#F3ECDE;color:#231F1A}
 .hero-copy{position:relative;z-index:3}
 .hero-copy .eyebrow{margin-bottom:18px;animation:fadeUp .8s .05s both var(--ease)}
 .hero h1{font-size:clamp(1.95rem,3.3vw,3rem);margin-bottom:18px;line-height:1.14;animation:fadeUp .9s .16s both var(--ease)}
-.hero h1 .ital{white-space:normal}
 .hero-sub{font-size:clamp(1rem,1.05vw,1.08rem);color:var(--ink-soft);max-width:32em;margin-bottom:30px;line-height:1.7;animation:fadeUp .9s .3s both var(--ease)}
 .hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:36px;animation:fadeUp .9s .44s both var(--ease)}
 .stats{display:flex;flex-wrap:wrap;align-items:flex-start;gap:20px clamp(30px,2.8vw,46px);border-top:1px solid var(--line);padding-top:26px;padding-bottom:clamp(18px,2.6vh,34px);animation:fadeUp .9s .56s both var(--ease)}
 .stat{flex:0 0 auto}
 .stat b{font-family:var(--serif);font-size:clamp(1.8rem,2.5vw,2.2rem);font-weight:600;color:var(--ink);display:block;line-height:1;letter-spacing:.005em;white-space:nowrap}
-.stat span{font-size:.66rem;letter-spacing:.15em;text-transform:uppercase;color:#9A917F;margin-top:11px;display:block;line-height:1.5;white-space:nowrap}
+.stat span{font-size:.66rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-top:11px;display:block;line-height:1.5;white-space:nowrap}
 .stat:nth-child(2) span{white-space:normal;max-width:180px}
 
 /* hero uses a transparent CUTOUT portrait in a soft medallion — torso in the disc,
@@ -188,14 +189,11 @@ header.on-dark .nav>.btn-primary{background:#F3ECDE;color:#231F1A}
   animation:ringGlint 8s linear infinite}
 @keyframes ringGlint{from{transform:translateX(-50%) rotate(0deg)}to{transform:translateX(-50%) rotate(360deg)}}
 .hero-shot{position:relative;z-index:2;display:block;width:clamp(340px,44vw,580px);height:auto;filter:drop-shadow(0 28px 46px rgba(35,31,26,.15))}
-.hero-ph{position:relative;z-index:2;display:block;width:clamp(340px,44vw,580px);height:auto;opacity:.9}
-.hero-sign{position:absolute;left:66%;right:auto;top:-2%;font-family:var(--script);font-size:clamp(1.6rem,2.6vw,2.2rem);color:var(--brass);transform:rotate(-3deg);z-index:3;text-shadow:0 2px 16px rgba(245,241,233,1),0 0 4px rgba(245,241,233,.9);animation:fadeUp 1s .7s both var(--ease)}
 @media(min-width:1440px){.hero{padding-top:clamp(116px,8vh,148px)}}
 @media(min-width:901px) and (max-width:1200px){
   .hero-grid{grid-template-columns:1fr .92fr;gap:clamp(12px,2vw,22px)}
   .hero-photo{margin-left:clamp(-40px,-3vw,-10px)}
-  .hero-shot,.hero-ph{width:clamp(360px,46vw,520px)}
-  .hero-sign{left:60%}
+  .hero-shot{width:clamp(360px,46vw,520px)}
 }
 
 /* ============ MARQUEE STRIP ============ */
@@ -208,20 +206,17 @@ header.on-dark .nav>.btn-primary{background:#F3ECDE;color:#231F1A}
 /* ============ MOTION ============ */
 @keyframes fadeUp{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
 @keyframes medIn{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:scale(1)}}
-@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-11px)}}
 @keyframes breathe{0%,100%{transform:translateX(-50%) scale(1)}50%{transform:translateX(-50%) scale(1.025)}}
-@keyframes spin{to{transform:rotate(360deg)}}
-@keyframes pulse{0%{transform:scale(.62);opacity:.65}100%{transform:scale(1.75);opacity:0}}
-@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
 @media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
   *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
   .reveal{opacity:1!important;transform:none!important}
 }
 
 /* ============ DIAGNOSTIC (light) ============ */
 .diag{position:relative;overflow:hidden;background:var(--ivory);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:clamp(70px,10vw,116px) 0}
-/* blurred branch decoration (asset has a grey bg → screen-blend + mask it away) */
-.diag-branch{position:absolute;z-index:0;pointer-events:none;mix-blend-mode:normal;filter:blur(5px);-webkit-mask-image:radial-gradient(ellipse 66% 72% at 50% 50%,#000 30%,transparent 76%);mask-image:radial-gradient(ellipse 66% 72% at 50% 50%,#000 30%,transparent 76%);opacity:.92}
+/* blurred branch decoration, radial mask fades its grey background into the ivory */
+.diag-branch{position:absolute;z-index:0;pointer-events:none;filter:blur(5px);-webkit-mask-image:radial-gradient(ellipse 66% 72% at 50% 50%,#000 30%,transparent 76%);mask-image:radial-gradient(ellipse 66% 72% at 50% 50%,#000 30%,transparent 76%);opacity:.92}
 .diag-branch img{display:block;width:100%;height:auto}
 .diag-branch.l{left:clamp(-360px,-18vw,-200px);top:clamp(-20px,5vw,80px);width:clamp(440px,46vw,760px);transform:rotate(309deg) scale(1.5)}
 /* golden gradient decorative arcs (svg) — one large graceful sweep hugging the right/bottom-right */
@@ -265,7 +260,7 @@ header.on-dark .nav>.btn-primary{background:#F3ECDE;color:#231F1A}
   display:flex;flex-direction:column;transition:.4s ease;
 }
 .scard:hover{transform:translateY(-6px);box-shadow:0 24px 50px -30px rgba(35,31,26,.4);border-color:var(--brass-soft)}
-.scard .num{font-family:var(--serif);font-size:1.05rem;color:var(--brass);margin-bottom:20px}
+.scard .num{font-family:var(--serif);font-size:1.05rem;color:var(--brass-ink);margin-bottom:20px}
 .scard h3{font-size:1.55rem;margin-bottom:6px}
 .scard .role{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:22px}
 .scard .pain{font-size:.96rem;color:var(--ink-soft);border-left:2px solid var(--brass);padding-left:16px;margin-bottom:22px;line-height:1.6}
@@ -301,7 +296,6 @@ header.on-dark .nav>.btn-primary{background:#F3ECDE;color:#231F1A}
 .step p{color:var(--ink-soft);font-size:.98rem;line-height:1.65}
 .method-note{margin-top:64px;background:var(--paper);border:1px solid var(--line);border-radius:4px;padding:clamp(30px,5vw,52px);text-align:center}
 .method-note p{font-family:var(--serif);font-size:clamp(1.25rem,2.6vw,1.85rem);line-height:1.45;max-width:24em;margin:0 auto;color:var(--ink)}
-.method-note .badge{display:inline-block;margin-bottom:20px;font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;color:var(--brass);border:1px solid var(--brass);border-radius:40px;padding:8px 20px}
 
 /* ============ TESTIMONIALS ============ */
 .tst{background:var(--espresso);color:#EDE6DA;padding:clamp(72px,11vw,130px) 0}
@@ -313,7 +307,7 @@ header.on-dark .nav>.btn-primary{background:#F3ECDE;color:#231F1A}
 .qcard{break-inside:avoid;background:rgba(255,255,255,.03);border:1px solid var(--line-dark);border-radius:4px;padding:32px 30px;margin-bottom:24px;transition:transform .5s var(--ease),border-color .5s ease,background .5s ease}
 .qcard:hover{transform:translateY(-5px);border-color:rgba(194,154,87,.4);background:rgba(194,154,87,.05)}
 .qcard .mark{font-family:var(--serif);font-size:3.2rem;color:var(--brass-2);line-height:.6;height:26px;display:block}
-.qcard p{font-size:.98rem;line-height:1.72;color:#D8CFC2}
+.qcard blockquote{font-size:.98rem;line-height:1.72;color:#D8CFC2}
 .qcard .who{margin-top:20px;display:flex;align-items:center;gap:12px;font-size:.78rem;letter-spacing:.06em;color:#9C9285}
 .qcard .who b{color:var(--brass-2);font-weight:500}
 .qcard .stars{color:var(--brass-2);letter-spacing:2px;font-size:.8rem}
@@ -336,12 +330,12 @@ header.on-dark .nav>.btn-primary{background:#F3ECDE;color:#231F1A}
 .gnum{flex:0 0 auto;font-family:var(--serif);font-weight:500;font-size:clamp(2.2rem,3vw,2.9rem);color:var(--brass);line-height:1;opacity:.85}
 .gcard h3{font-family:var(--serif);font-weight:600;font-size:clamp(1.32rem,1.7vw,1.55rem);color:var(--ink);margin-bottom:clamp(14px,1.5vw,18px);line-height:1.2}
 .gcard p{color:var(--ink-soft);font-size:.98rem;line-height:1.66}
-.gcard .refund{margin-top:auto;padding-top:clamp(18px,2vw,24px);font-size:.92rem;color:var(--brass);font-weight:600;display:flex;align-items:flex-start;gap:9px;line-height:1.5}
+.gcard .refund{margin-top:auto;padding-top:clamp(18px,2vw,24px);font-size:.92rem;color:var(--brass-ink);font-weight:600;display:flex;align-items:flex-start;gap:9px;line-height:1.5}
 .gcard .refund::before{content:"✦";font-weight:400;font-size:.9em}
 .guar-foot{text-align:center;margin-top:clamp(40px,5.2vw,66px)}
 .guar-foot .guar-star{margin:0 0 clamp(14px,1.6vw,20px)}
 .guar-foot p{font-size:clamp(.72rem,.9vw,.82rem);letter-spacing:.18em;text-transform:uppercase;color:var(--muted);line-height:1.7}
-.guar-foot .z{color:var(--brass)}
+.guar-foot .z{color:var(--brass-ink)}
 
 /* ============ PRICING ============ */
 .pricing{padding:clamp(72px,11vw,130px) 0}
@@ -366,9 +360,9 @@ header.on-dark .nav>.btn-primary{background:#F3ECDE;color:#231F1A}
 .pcardp.feat .plist li{color:#CFC6B8}
 .pcardp.feat .plist svg{stroke:var(--brass-2)}
 .pcardp.feat .p-foot{color:var(--brass-2)}
-.p-badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--brass);color:#fff;font-size:.62rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:8px 18px;border-radius:40px;white-space:nowrap;box-shadow:0 10px 22px -8px rgba(169,128,63,.6)}
-.btn-brass{background:var(--brass);color:#fff}
-.btn-brass:hover{background:var(--brass-2);color:#fff;transform:translateY(-2px)}
+.p-badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--brass-ink);color:#fff;font-size:.62rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:8px 18px;border-radius:40px;white-space:nowrap;box-shadow:0 10px 22px -8px rgba(169,128,63,.6)}
+.btn-brass{background:var(--brass-ink);color:#fff}
+.btn-brass:hover{background:var(--brass);color:#fff;transform:translateY(-2px)}
 
 /* ============ FINAL CTA ============ */
 .cta{padding:clamp(54px,8vw,92px) 0}
@@ -384,7 +378,7 @@ header.on-dark .nav>.btn-primary{background:#F3ECDE;color:#231F1A}
 .form{display:grid;gap:18px;max-width:520px}
 .field{position:relative}
 .field label{font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:9px}
-.field input{width:100%;background:transparent;border:none;border-bottom:1px solid var(--line-dark);border-bottom-color:var(--sand-deep);padding:10px 2px;font-family:var(--sans);font-size:1.05rem;color:var(--ink);transition:border-color .3s}
+.field input{width:100%;background:transparent;border:none;border-bottom:1px solid var(--sand-deep);padding:10px 2px;font-family:var(--sans);font-size:1.05rem;color:var(--ink);transition:border-color .3s}
 .field input:focus{outline:none;border-bottom-color:var(--brass)}
 .field select{width:100%;background:transparent;border:none;border-bottom:1px solid var(--sand-deep);padding:10px 26px 10px 2px;font-family:var(--sans);font-size:1.05rem;color:var(--ink);cursor:pointer;appearance:none;-webkit-appearance:none;border-radius:0;transition:border-color .3s;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23A9803F' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 2px center}
 .field select:focus{outline:none;border-bottom-color:var(--brass)}
@@ -392,29 +386,31 @@ header.on-dark .nav>.btn-primary{background:#F3ECDE;color:#231F1A}
 .form-err.show{display:block}
 .consent{display:flex;gap:10px;align-items:flex-start;font-size:.76rem;color:var(--muted);line-height:1.5;cursor:pointer;margin-top:-2px}
 .consent input{flex:0 0 auto;width:16px;height:16px;margin-top:1px;accent-color:var(--brass);cursor:pointer}
-.consent a{color:var(--brass);text-decoration:underline;text-underline-offset:2px}
+.consent a{color:var(--brass-ink);text-decoration:underline;text-underline-offset:2px}
 .form .btn{justify-content:center;margin-top:8px;padding:19px 30px}
 .form-note{font-size:.8rem;color:var(--muted);text-align:center;margin-top:2px;display:flex;align-items:center;justify-content:center;gap:10px}
 .form-note::before{content:"🔒";font-size:.85rem}
+.honey{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.cta-alt{display:grid;gap:18px;max-width:520px;margin-top:18px}
 .or{display:flex;align-items:center;gap:14px;color:var(--muted);font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;margin:6px 0}
 .or::before,.or::after{content:"";flex:1;height:1px;background:var(--line)}
 .tg-btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;border:1px solid var(--ink);border-radius:2px;padding:17px;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;transition:.35s}
 .tg-btn:hover{background:var(--ink);color:var(--ivory)}
-.form-done{display:none;background:var(--paper);border:1px solid var(--brass-soft);border-radius:4px;padding:40px;text-align:center}
+.form-done{display:none;background:var(--paper);border:1px solid var(--brass-soft);border-radius:4px;padding:40px;text-align:center;outline:none}
 .form-done.on{display:block}
-.form-done h3{font-size:1.6rem;color:var(--brass);margin-bottom:10px}
+.form-done h3{font-size:1.6rem;color:var(--brass-ink);margin-bottom:10px}
 .form-done p{color:var(--ink-soft)}
 
 /* ============ FOOTER ============ */
 footer{background:var(--espresso);color:#B7ADA0;padding:70px 0 40px}
 .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;padding-bottom:44px;border-bottom:1px solid var(--line-dark)}
-.foot-brand b{font-family:var(--serif);font-size:1.7rem;color:#fff;display:block}
+.foot-brand b{font-family:var(--serif);font-size:1.7rem;font-weight:600;color:#fff;display:block}
 .foot-brand .sign{font-family:var(--sans);font-size:.62rem;letter-spacing:.34em;text-transform:uppercase;color:#9E9689;margin-top:10px}
 .foot-brand p{margin-top:16px;max-width:24em;font-size:.94rem;line-height:1.7}
-.foot-col h4{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:#fff;margin-bottom:18px}
+.foot-col h3{font-family:var(--sans);font-size:.72rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#fff;margin-bottom:18px}
 .foot-col a{display:block;font-size:.95rem;margin-bottom:12px;transition:color .25s}
 .foot-col a:hover{color:var(--brass-2)}
-.foot-bottom{padding-top:26px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:.82rem;color:#7C7367}
+.foot-bottom{padding-top:26px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:.82rem;color:#948B7E}
 .foot-bottom a{color:#A79E90;transition:color .25s}
 .foot-bottom a:hover{color:var(--brass-2)}
 
@@ -438,7 +434,7 @@ footer{background:var(--espresso);color:#B7ADA0;padding:70px 0 40px}
   .cta-grid{grid-template-columns:1fr}
   .cta-photo{min-height:340px}
   .price-grid{grid-template-columns:1fr;max-width:440px;gap:34px}
-  .pcardp.feat,.pcardp.feat:hover{transform:none}
+  .pcardp.feat{transform:none}
   .pcardp.feat:hover{transform:translateY(-7px)}
   .foot-grid{grid-template-columns:1fr;gap:32px}
 }
@@ -453,23 +449,25 @@ footer{background:var(--espresso);color:#B7ADA0;padding:70px 0 40px}
   .diag-reveal .big .line{display:none}
 }
 @media(max-width:520px){
+  .hero h1 br{display:none} /* forced breaks leave one-word orphans at phone widths */
   .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px 10px;align-items:start}
   .stats .stat span{white-space:normal;max-width:none}
-  .hero h1 .ital{white-space:normal}
 }
 
-/* mobile menu drawer */
-.drawer{position:fixed;inset:0;background:var(--ivory);z-index:60;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:26px;transform:translateY(-100%);transition:transform .4s ease}
-.drawer.open{transform:none}
+/* mobile menu drawer — visibility keeps the closed drawer out of the tab order and the a11y tree */
+.drawer{position:fixed;inset:0;background:var(--ivory);z-index:60;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:26px;transform:translateY(-100%);visibility:hidden;transition:transform .4s ease,visibility 0s .4s}
+.drawer.open{transform:none;visibility:visible;transition-delay:0s}
 .drawer a{font-family:var(--serif);font-size:1.7rem}
-.drawer .close{position:absolute;top:24px;right:24px;font-size:2rem;background:none;border:none;cursor:pointer;color:var(--ink)}
+.drawer .close{position:absolute;top:24px;right:24px;font-size:2rem;line-height:1;background:none;border:none;cursor:pointer;color:var(--ink);padding:6px 10px}
 </style>
 </head>
 <body>
 
+<a class="skip" href="#main">К содержанию</a>
+
 <!-- ============ HEADER ============ -->
 <header id="hdr">
-  <nav class="nav">
+  <nav class="nav" aria-label="Основная навигация">
     <div class="brand">
       <b>ЭЛЬВИРА</b>
       <span>персональный коучинг</span>
@@ -481,30 +479,32 @@ footer{background:var(--espresso);color:#B7ADA0;padding:70px 0 40px}
       <a href="#pricing">Стоимость</a>
       <a href="#tst">Отзывы</a>
     </div>
-    <a href="#cta" class="btn btn-primary" style="padding:13px 24px">Записаться</a>
-    <button class="burger" id="burger" aria-label="Меню"><span></span><span></span><span></span></button>
+    <a href="#cta" class="btn btn-primary">Записаться</a>
+    <button type="button" class="burger" id="burger" aria-label="Открыть меню" aria-expanded="false" aria-controls="drawer"><span></span><span></span><span></span></button>
   </nav>
 </header>
 
-<div class="drawer" id="drawer">
-  <button class="close" id="close">×</button>
+<nav class="drawer" id="drawer" aria-label="Мобильное меню">
+  <button type="button" class="close" id="close" aria-label="Закрыть меню">×</button>
   <a href="#diag">Диагностика</a>
   <a href="#seg">С кем работаю</a>
   <a href="#method">Как проходит</a>
   <a href="#pricing">Стоимость</a>
   <a href="#tst">Отзывы</a>
   <a href="#cta" class="btn btn-primary">Записаться</a>
-</div>
+</nav>
+
+<main id="main">
 
 <!-- ============ HERO ============ -->
 <section class="hero">
   <div class="wrap hero-grid">
     <div class="hero-copy">
       <span class="eyebrow">Персональный коучинг</span>
-      <h1>Помогаю разобраться,<br>почему вы делаете много,<br>но всё ещё не вышли в <span class="ital">желаемый масштаб.</span></h1>
+      <h1>Помогаю разобраться,<br> почему вы делаете много,<br> но всё ещё не вышли в <span class="ital">желаемый масштаб.</span></h1>
       <p class="hero-sub">За 60 минут находим и прорабатываем повторяющийся паттерн мышления, который формирует предсказуемое будущее — а не даёт выйти в реализацию.</p>
       <div class="hero-cta">
-        <a href="#cta" class="btn btn-primary">Записаться на сессию <span class="arr">→</span></a>
+        <a href="#cta" class="btn btn-primary">Записаться на сессию <span class="arr" aria-hidden="true">→</span></a>
         <a href="#tst" class="btn btn-ghost">Отзывы</a>
       </div>
       <div class="stats">
@@ -517,16 +517,8 @@ footer{background:var(--espresso);color:#B7ADA0;padding:70px 0 40px}
       <div class="hero-figure">
         <div class="disc"></div>
         <div class="ring"></div>
-        <!-- Вырезанное фото коуча (PNG, прозрачный фон): assets/elvira.png -->
-        <picture>
-          <source srcset="assets/elvira.webp" type="image/webp">
-          <img class="hero-shot" src="assets/elvira.png" width="992" height="1088" fetchpriority="high" alt="Эльвира — коуч" onerror="this.style.display='none';this.closest('.hero-figure').querySelector('.hero-ph').style.display='block'">
-        </picture>
-        <svg class="hero-ph" style="display:none" viewBox="0 0 300 360" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax meet">
-          <defs><linearGradient id="ph" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4A433B"/><stop offset="1" stop-color="#231F1A"/></linearGradient></defs>
-          <circle cx="150" cy="96" r="66" fill="url(#ph)"/>
-          <path d="M40 360c0-72 49-118 110-118s110 46 110 118z" fill="url(#ph)"/>
-        </svg>
+        <!-- cutout portrait with transparent background -->
+        <img class="hero-shot" src="assets/elvira.webp" width="992" height="1088" fetchpriority="high" alt="Эльвира Климанова, персональный коуч">
       </div>
     </div>
   </div>
@@ -544,7 +536,7 @@ footer{background:var(--espresso);color:#B7ADA0;padding:70px 0 40px}
 
 <!-- ============ DIAGNOSTIC ============ -->
 <section class="diag" id="diag">
-  <div class="diag-branch l"><img src="assets/background-decoration/branch.png" alt="" loading="lazy"></div>
+  <div class="diag-branch l"><img src="assets/background-decoration/branch.webp" width="800" height="533" alt="" loading="lazy" decoding="async"></div>
   <svg class="diag-arcs" viewBox="0 0 1000 1000" fill="none" aria-hidden="true">
     <defs>
       <linearGradient id="diagArc" x1="0" y1="0" x2=".35" y2="1">
@@ -565,7 +557,7 @@ footer{background:var(--espresso);color:#B7ADA0;padding:70px 0 40px}
       <div class="ditem">
         <div class="ditem-top">
           <span class="num">01</span>
-          <span class="dicon"><img src="assets/icon-issues/01.png" alt="" width="32" height="32"></span>
+          <span class="dicon"><img src="assets/icon-issues/01.webp" alt="" width="96" height="96" loading="lazy" decoding="async"></span>
         </div>
         <h3>Постоянная усталость</h3>
         <p>Сил не хватает уже с утра. Даже отдых не помогает восстановиться.</p>
@@ -573,7 +565,7 @@ footer{background:var(--espresso);color:#B7ADA0;padding:70px 0 40px}
       <div class="ditem">
         <div class="ditem-top">
           <span class="num">02</span>
-          <span class="dicon"><img src="assets/icon-issues/02.png" alt="" width="32" height="32"></span>
+          <span class="dicon"><img src="assets/icon-issues/02.webp" alt="" width="96" height="96" loading="lazy" decoding="async"></span>
         </div>
         <h3>Внутреннее напряжение</h3>
         <p>Ощущение, что всё на пределе. Трудно расслабиться.</p>
@@ -581,7 +573,7 @@ footer{background:var(--espresso);color:#B7ADA0;padding:70px 0 40px}
       <div class="ditem">
         <div class="ditem-top">
           <span class="num">03</span>
-          <span class="dicon"><img src="assets/icon-issues/03.png" alt="" width="32" height="32"></span>
+          <span class="dicon"><img src="assets/icon-issues/03.webp" alt="" width="96" height="96" loading="lazy" decoding="async"></span>
         </div>
         <h3>Потеря ориентира</h3>
         <p>Не понимаете, куда двигаться дальше. Сомнения не отпускают.</p>
@@ -589,7 +581,7 @@ footer{background:var(--espresso);color:#B7ADA0;padding:70px 0 40px}
       <div class="ditem">
         <div class="ditem-top">
           <span class="num">04</span>
-          <span class="dicon"><img src="assets/icon-issues/04.png" alt="" width="32" height="32"></span>
+          <span class="dicon"><img src="assets/icon-issues/04.webp" alt="" width="96" height="96" loading="lazy" decoding="async"></span>
         </div>
         <h3>Чувство пустоты</h3>
         <p>Будто живёте не свою жизнь. Нет смысла и внутреннего отклика.</p>
@@ -620,7 +612,7 @@ footer{background:var(--espresso);color:#B7ADA0;padding:70px 0 40px}
       </div>
     </div>
     <div class="diag-reveal reveal">
-      <div class="diag-sep"><span>&#10022;</span></div>
+      <div class="diag-sep" aria-hidden="true"><span>&#10022;</span></div>
       <div class="big"><span class="line"></span><span class="big-txt">У всего этого — один <span class="z">корень.</span></span><span class="line"></span></div>
       <p class="sub">Пора увидеть его и изменить всё у источника.</p>
     </div>
@@ -629,7 +621,7 @@ footer{background:var(--espresso);color:#B7ADA0;padding:70px 0 40px}
 
 <!-- ============ GUARANTEE ============ -->
 <section class="guar" id="guar">
-  <div class="guar-branch"><img src="assets/background-decoration/branch.png" alt="" loading="lazy"></div>
+  <div class="guar-branch"><img src="assets/background-decoration/branch.webp" width="800" height="533" alt="" loading="lazy" decoding="async"></div>
   <svg class="guar-arcs" viewBox="0 0 1000 1000" fill="none" aria-hidden="true">
     <defs>
       <linearGradient id="guarArc" x1="0" y1="0" x2=".7" y2="1">
@@ -645,7 +637,7 @@ footer{background:var(--espresso);color:#B7ADA0;padding:70px 0 40px}
     <div class="sec-head reveal">
       <span class="eyebrow center">Гарантия</span>
       <h2>Тройная гарантия результата</h2>
-      <div class="guar-star">✦</div>
+      <div class="guar-star" aria-hidden="true">✦</div>
       <p>Я беру ответственность за процесс и результат.<br>Вы получаете поддержку, ясность и реальные изменения.</p>
     </div>
     <div class="guar-grid">
@@ -679,7 +671,7 @@ footer{background:var(--espresso);color:#B7ADA0;padding:70px 0 40px}
       </div>
     </div>
     <div class="guar-foot reveal">
-      <span class="guar-star">✦</span>
+      <span class="guar-star" aria-hidden="true">✦</span>
       <p>Гарантирую честный подход и результат, который <span class="z">меняет жизнь</span>.</p>
     </div>
   </div>
@@ -742,10 +734,10 @@ footer{background:var(--espresso);color:#B7ADA0;padding:70px 0 40px}
       <p class="after-lead">Вы выходите из паттернов, которые годами держали вас на потолке — и начинаете жить свою жизнь, а не тянуть чужой сценарий.</p>
     </div>
     <ul class="after-list reveal">
-      <li><span class="mk">✓</span><div><b>Энергия и лёгкость вместо выгорания</b><span>Проживаете любовь к себе, тело расслабляется, уходит напряжение.</span></div></li>
-      <li><span class="mk">✓</span><div><b>Разрешаете себе масштаб и деньги</b><span>Нет сопротивления на пороге следующего уровня — «я не достоин» больше не звучит.</span></div></li>
-      <li><span class="mk">✓</span><div><b>Делегируете и перестаёте всё держать на себе</b><span>Бизнес перестаёт быть золотой клеткой, появляется свобода.</span></div></li>
-      <li><span class="mk">✓</span><div><b>Выходите в реализацию уверенно</b><span>Заявляете о себе, поднимаете цену, идёте на новый уровень ответственности.</span></div></li>
+      <li><span class="mk" aria-hidden="true">✓</span><div><b>Энергия и лёгкость вместо выгорания</b><span>Проживаете любовь к себе, тело расслабляется, уходит напряжение.</span></div></li>
+      <li><span class="mk" aria-hidden="true">✓</span><div><b>Разрешаете себе масштаб и деньги</b><span>Нет сопротивления на пороге следующего уровня — «я не достоин» больше не звучит.</span></div></li>
+      <li><span class="mk" aria-hidden="true">✓</span><div><b>Делегируете и перестаёте всё держать на себе</b><span>Бизнес перестаёт быть золотой клеткой, появляется свобода.</span></div></li>
+      <li><span class="mk" aria-hidden="true">✓</span><div><b>Выходите в реализацию уверенно</b><span>Заявляете о себе, поднимаете цену, идёте на новый уровень ответственности.</span></div></li>
     </ul>
   </div>
 </section>
@@ -790,36 +782,36 @@ footer{background:var(--espresso);color:#B7ADA0;padding:70px 0 40px}
       <p>Реальные слова клиентов — про глубину, лёгкость и результат, который остаётся с ними.</p>
     </div>
     <div class="tst-grid">
-      <div class="qcard reveal">
-        <span class="mark">“</span>
-        <p>Консультация разделила ощущение себя как специалиста на «до» и «после». Эльвира наглядно показала, что ограничения для роста не внешние, а внутренние. Результат — новая должность и зарплата почти ×2, испытательный срок прошёл «выше ожиданий».</p>
-        <div class="who"><span class="stars">★★★★★</span><b>Руководитель</b></div>
-      </div>
-      <div class="qcard reveal">
-        <span class="mark">“</span>
-        <p>Ты распутала узел, который так долго сковывал меня и мою реализацию. Подсветила такую глубокую вещь, которую никто не указывал — и это стало ключом. Твоя супер-сила — видеть самый большой затык и не бояться сказать всё как есть.</p>
-        <div class="who"><span class="stars">★★★★★</span><b>Эксперт</b></div>
-      </div>
-      <div class="qcard reveal">
-        <span class="mark">“</span>
-        <p>За 40 минут системно, красиво и очень ёмко собрала все данные воедино и вынесла результат, который меня очень вдохновил. Сколько я копалась в себе и не могла нащупать эту нишу — а ты буквально определила моё предназначение.</p>
-        <div class="who"><span class="stars">★★★★★</span><b>Предприниматель</b></div>
-      </div>
-      <div class="qcard reveal">
-        <span class="mark">“</span>
-        <p>Авторский метод уникальный — блоки и травмы исцеляются мягко и быстрее, чем через просто психологию. После сессии ощущение в теле, будто скинула вес, ушло напряжение. Я позволяю себе мечтать по-крупному и делаю новые действия.</p>
-        <div class="who"><span class="stars">★★★★★</span><b>Клиент</b></div>
-      </div>
-      <div class="qcard reveal">
-        <span class="mark">“</span>
-        <p>Всё в точку — подсветила, разобрала, помогла вскрыть, откуда и что идёт. Ты очень к себе располагаешь, попадаешь в самое сердце. На душе умиротворение, хожу и наслаждаюсь. Такой кайф чувствовать лёгкость внутри.</p>
-        <div class="who"><span class="stars">★★★★★</span><b>Клиент</b></div>
-      </div>
-      <div class="qcard reveal">
-        <span class="mark">“</span>
-        <p>Казалось бы, что в моей ситуации совсем нет выхода: ненавистная работа, отсутствие веры. Но всё, как оказалось, гораздо проще. Получила полезную информацию, упражнения и план к действию. Главное — выбрать профессионала.</p>
-        <div class="who"><span class="stars">★★★★★</span><b>Клиент</b></div>
-      </div>
+      <figure class="qcard reveal">
+        <span class="mark" aria-hidden="true">“</span>
+        <blockquote>Консультация разделила ощущение себя как специалиста на «до» и «после». Эльвира наглядно показала, что ограничения для роста не внешние, а внутренние. Результат — новая должность и зарплата почти ×2, испытательный срок прошёл «выше ожиданий».</blockquote>
+        <figcaption class="who"><span class="stars" role="img" aria-label="Оценка 5 из 5">★★★★★</span><b>Руководитель</b></figcaption>
+      </figure>
+      <figure class="qcard reveal">
+        <span class="mark" aria-hidden="true">“</span>
+        <blockquote>Ты распутала узел, который так долго сковывал меня и мою реализацию. Подсветила такую глубокую вещь, которую никто не указывал — и это стало ключом. Твоя супер-сила — видеть самый большой затык и не бояться сказать всё как есть.</blockquote>
+        <figcaption class="who"><span class="stars" role="img" aria-label="Оценка 5 из 5">★★★★★</span><b>Эксперт</b></figcaption>
+      </figure>
+      <figure class="qcard reveal">
+        <span class="mark" aria-hidden="true">“</span>
+        <blockquote>За 40 минут системно, красиво и очень ёмко собрала все данные воедино и вынесла результат, который меня очень вдохновил. Сколько я копалась в себе и не могла нащупать эту нишу — а ты буквально определила моё предназначение.</blockquote>
+        <figcaption class="who"><span class="stars" role="img" aria-label="Оценка 5 из 5">★★★★★</span><b>Предприниматель</b></figcaption>
+      </figure>
+      <figure class="qcard reveal">
+        <span class="mark" aria-hidden="true">“</span>
+        <blockquote>Авторский метод уникальный — блоки и травмы исцеляются мягко и быстрее, чем через просто психологию. После сессии ощущение в теле, будто скинула вес, ушло напряжение. Я позволяю себе мечтать по-крупному и делаю новые действия.</blockquote>
+        <figcaption class="who"><span class="stars" role="img" aria-label="Оценка 5 из 5">★★★★★</span><b>Клиент</b></figcaption>
+      </figure>
+      <figure class="qcard reveal">
+        <span class="mark" aria-hidden="true">“</span>
+        <blockquote>Всё в точку — подсветила, разобрала, помогла вскрыть, откуда и что идёт. Ты очень к себе располагаешь, попадаешь в самое сердце. На душе умиротворение, хожу и наслаждаюсь. Такой кайф чувствовать лёгкость внутри.</blockquote>
+        <figcaption class="who"><span class="stars" role="img" aria-label="Оценка 5 из 5">★★★★★</span><b>Клиент</b></figcaption>
+      </figure>
+      <figure class="qcard reveal">
+        <span class="mark" aria-hidden="true">“</span>
+        <blockquote>Казалось бы, что в моей ситуации совсем нет выхода: ненавистная работа, отсутствие веры. Но всё, как оказалось, гораздо проще. Получила полезную информацию, упражнения и план к действию. Главное — выбрать профессионала.</blockquote>
+        <figcaption class="who"><span class="stars" role="img" aria-label="Оценка 5 из 5">★★★★★</span><b>Клиент</b></figcaption>
+      </figure>
     </div>
   </div>
 </section>
@@ -883,11 +875,7 @@ footer{background:var(--espresso);color:#B7ADA0;padding:70px 0 40px}
   <div class="wrap cta-grid">
     <div class="cta-photo reveal">
       <div class="cdisc"></div>
-      <!-- То же вырезанное фото: assets/elvira.png -->
-      <picture>
-        <source srcset="assets/elvira.webp" type="image/webp">
-        <img class="cta-shot" src="assets/elvira.png" width="992" height="1088" loading="lazy" alt="Эльвира" onerror="this.style.display='none'">
-      </picture>
+      <img class="cta-shot" src="assets/elvira.webp" width="992" height="1088" loading="lazy" decoding="async" alt="">
       <div class="cta-quote">«Масштаб бизнеса — это всегда масштаб личности владельца. Мы работаем с фундаментом.»</div>
     </div>
     <div class="cta-box reveal">
@@ -896,36 +884,41 @@ footer{background:var(--espresso);color:#B7ADA0;padding:70px 0 40px}
       <p class="lead">Оставьте контакт — я вернусь с деталями и предложу время для стратегической сессии.</p>
       <form class="form" id="leadForm">
         <div class="field">
-          <label>Ваш запрос</label>
-          <input type="text" name="request" required autocomplete="off">
+          <label for="f-request">Ваш запрос</label>
+          <input type="text" id="f-request" name="request" required autocomplete="off">
         </div>
         <div class="field">
-          <label>Телефон / Telegram</label>
-          <input type="text" name="contact" required autocomplete="tel">
+          <label for="f-contact">Телефон / Telegram</label>
+          <input type="text" id="f-contact" name="contact" required autocomplete="tel">
         </div>
         <div class="field">
-          <label>Формат</label>
-          <select name="format" id="formatSelect">
+          <label for="f-format">Формат</label>
+          <select name="format" id="f-format">
             <option value="Онлайн-сессия, 10 000 ₽">Онлайн-сессия · 10 000 ₽</option>
             <option value="Оффлайн-сессия, 18 000 ₽">Оффлайн-сессия · 18 000 ₽</option>
             <option value="Пакет 5 сессий, 42 000 / 75 000 ₽">Пакет 5 сессий · 42 000 / 75 000 ₽</option>
           </select>
         </div>
-        <p class="form-err" id="formErr">Что-то пошло не так. Проверьте связь и попробуйте ещё раз.</p>
+        <!-- honeypot for bots: hidden from people, filled by scripts -->
+        <input class="honey" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <p class="form-err" id="formErr" role="alert"></p>
         <label class="consent"><input type="checkbox" name="consent" required><span>Соглашаюсь на обработку персональных данных и с <a href="/privacy.html" target="_blank" rel="noopener">политикой конфиденциальности</a></span></label>
-        <button type="submit" class="btn btn-primary">Записаться на сессию <span class="arr">→</span></button>
+        <button type="submit" class="btn btn-primary" id="formBtn">Записаться на сессию <span class="arr" aria-hidden="true">→</span></button>
         <p class="form-note">Гарантия результата · Полная конфиденциальность</p>
-        <div class="or">или напишите напрямую</div>
-        <!-- Замените ссылку на реальный Telegram коуча -->
-        <a href="https://t.me/ElviraKlimanova" target="_blank" rel="noopener" class="tg-btn">✈ Написать в Telegram</a>
       </form>
-      <div class="form-done" id="formDone">
+      <div class="form-done" id="formDone" tabindex="-1">
         <h3>Спасибо!</h3>
         <p>Заявка принята. Я свяжусь с вами в ближайшее время.</p>
+      </div>
+      <div class="cta-alt">
+        <div class="or">или напишите напрямую</div>
+        <a href="https://t.me/ElviraKlimanova" target="_blank" rel="noopener" class="tg-btn"><span aria-hidden="true">✈</span> Написать в Telegram</a>
       </div>
     </div>
   </div>
 </section>
+
+</main>
 
 <!-- ============ FOOTER ============ -->
 <footer>
@@ -937,14 +930,15 @@ footer{background:var(--espresso);color:#B7ADA0;padding:70px 0 40px}
         <p>Помогаю выйти из паттернов, которые годами не дают пробить потолок, в свой настоящий масштаб.</p>
       </div>
       <div class="foot-col">
-        <h4>Разделы</h4>
+        <h3>Разделы</h3>
         <a href="#diag">Диагностика</a>
         <a href="#seg">С кем работаю</a>
         <a href="#method">Как проходит</a>
+        <a href="#pricing">Стоимость</a>
         <a href="#tst">Отзывы</a>
       </div>
       <div class="foot-col">
-        <h4>Контакты</h4>
+        <h3>Контакты</h3>
         <a href="https://t.me/ElviraKlimanova" target="_blank" rel="noopener">Telegram</a>
         <a href="mailto:productklimanova@gmail.com">Написать на почту</a>
         <a href="#cta">Записаться на сессию</a>
@@ -958,7 +952,9 @@ footer{background:var(--espresso);color:#B7ADA0;padding:70px 0 40px}
 </footer>
 
 <script>
-// header scroll state
+const reducedMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+// header: solid bar after scrolling, light-on-dark variant over dark sections
 const hdr=document.getElementById('hdr');
 const darkSecs=[...document.querySelectorAll('.tst,footer')];
 function updHeader(){
@@ -970,19 +966,28 @@ function updHeader(){
 addEventListener('scroll',updHeader,{passive:true});
 updHeader();
 
-// mobile drawer
+// mobile drawer: focus moves in on open and back to the burger on close, Escape closes
 const drawer=document.getElementById('drawer');
-document.getElementById('burger').onclick=()=>drawer.classList.add('open');
-document.getElementById('close').onclick=()=>drawer.classList.remove('open');
-drawer.querySelectorAll('a').forEach(a=>a.onclick=()=>drawer.classList.remove('open'));
+const burger=document.getElementById('burger');
+function setDrawer(open){
+  drawer.classList.toggle('open',open);
+  document.body.classList.toggle('menu-open',open);
+  burger.setAttribute('aria-expanded',String(open));
+  if(open) drawer.querySelector('a').focus();
+  else burger.focus();
+}
+burger.addEventListener('click',()=>setDrawer(true));
+document.getElementById('close').addEventListener('click',()=>setDrawer(false));
+drawer.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>setDrawer(false)));
+addEventListener('keydown',e=>{if(e.key==='Escape'&&drawer.classList.contains('open'))setDrawer(false)});
 
 // reveal on scroll
-const io=new IntersectionObserver((es)=>{
+const io=new IntersectionObserver(es=>{
   es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})
 },{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
-// count-up numbers
+// count-up numbers (skipped for reduced motion — the markup already holds the final values)
 function countUp(el){
   const target=parseInt(el.dataset.count,10), suffix=el.dataset.suffix||'', dur=1500, t0=performance.now();
   function step(now){
@@ -992,46 +997,56 @@ function countUp(el){
   }
   requestAnimationFrame(step);
 }
-const countIO=new IntersectionObserver((es)=>{
-  es.forEach(e=>{if(e.isIntersecting){countUp(e.target);countIO.unobserve(e.target)}})
-},{threshold:.6});
-document.querySelectorAll('[data-count]').forEach(el=>countIO.observe(el));
+if(!reducedMotion){
+  const countIO=new IntersectionObserver(es=>{
+    es.forEach(e=>{if(e.isIntersecting){countUp(e.target);countIO.unobserve(e.target)}})
+  },{threshold:.6});
+  document.querySelectorAll('[data-count]').forEach(el=>countIO.observe(el));
+}
 
-// form → formsubmit.co (живой сервис, заявки на почту productklimanova@gmail.com)
-var FORM_ENDPOINT='https://formsubmit.co/ajax/productklimanova@gmail.com';
-document.getElementById('leadForm').addEventListener('submit',function(e){
+// lead form → formsubmit.co, delivered to productklimanova@gmail.com
+const FORM_ENDPOINT='https://formsubmit.co/ajax/productklimanova@gmail.com';
+const form=document.getElementById('leadForm');
+const formBtn=document.getElementById('formBtn');
+const formErr=document.getElementById('formErr');
+const formDone=document.getElementById('formDone');
+const btnLabel=formBtn.innerHTML;
+form.addEventListener('submit',async e=>{
   e.preventDefault();
-  var form=this, btn=form.querySelector('button[type=submit]'), err=document.getElementById('formErr');
-  var val=function(n){var el=form.querySelector('[name="'+n+'"]');return el?el.value:'';};
-  err.classList.remove('show');
-  var payload={
-    request: val('request'),
-    phone: val('contact'),
-    format: val('format'),
-    _subject: 'Заявка с сайта · Эльвира Климанова',
-    _template: 'table',
-    _captcha: 'false'
-  };
-  btn.disabled=true; btn.textContent='Отправляем…';
-  fetch(FORM_ENDPOINT,{
-    method:'POST',
-    headers:{'Content-Type':'application/json','Accept':'application/json'},
-    body:JSON.stringify(payload)
-  }).then(function(res){
-    if(!res.ok) throw new Error('bad status');
-    form.style.display='none';
-    document.getElementById('formDone').classList.add('on');
-  }).catch(function(){
-    err.classList.add('show');
-    btn.disabled=false; btn.innerHTML='Записаться на сессию <span class="arr">→</span>';
-  });
+  const data=new FormData(form);
+  formErr.textContent='';
+  formErr.classList.remove('show');
+  formBtn.disabled=true;
+  formBtn.textContent='Отправляем…';
+  try{
+    const res=await fetch(FORM_ENDPOINT,{
+      method:'POST',
+      headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body:JSON.stringify({
+        request:data.get('request'),
+        phone:data.get('contact'),
+        format:data.get('format'),
+        _honey:data.get('_honey'),
+        _subject:'Заявка с сайта · Эльвира Климанова',
+        _template:'table',
+        _captcha:'false'
+      })
+    });
+    if(!res.ok) throw new Error('HTTP '+res.status);
+    form.hidden=true;
+    formDone.classList.add('on');
+    formDone.focus();
+  }catch(err){
+    formErr.textContent='Что-то пошло не так. Проверьте связь и попробуйте ещё раз — или напишите в Telegram.';
+    formErr.classList.add('show');
+    formBtn.disabled=false;
+    formBtn.innerHTML=btnLabel;
+  }
 });
-// предвыбор формата с карточек тарифов
-document.querySelectorAll('[data-format]').forEach(function(a){
-  a.addEventListener('click',function(){
-    var sel=document.getElementById('formatSelect');
-    if(sel) sel.value=this.getAttribute('data-format');
-  });
+// pricing cards preselect the matching format in the form
+const formatSelect=document.getElementById('f-format');
+document.querySelectorAll('[data-format]').forEach(a=>{
+  a.addEventListener('click',()=>{formatSelect.value=a.dataset.format});
 });
 </script>
 
@@ -1039,14 +1054,24 @@ document.querySelectorAll('[data-format]').forEach(function(a){
 {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
-  "name": "Эльвира — персональный коучинг",
-  "description": "Персональный коучинг для предпринимательниц, руководительниц и экспертов: находим и прорабатываем паттерн, который держит на потолке, и помогаем выйти в желаемый масштаб.",
-  "url": "https://elvira-landing.vercel.app/",
-  "image": "https://elvira-landing.vercel.app/assets/og.jpg",
-  "areaServed": "Online",
+  "@id": "https://klimanova-inside.ru/#service",
+  "name": "Эльвира Климанова — персональный коучинг",
+  "description": "Персональный коучинг для предпринимателей, руководителей и экспертов: за одну сессию находим и прорабатываем паттерн, который держит на потолке и не даёт выйти в желаемый масштаб.",
+  "url": "https://klimanova-inside.ru/",
+  "image": "https://klimanova-inside.ru/assets/og.jpg",
+  "email": "productklimanova@gmail.com",
+  "sameAs": ["https://t.me/ElviraKlimanova"],
+  "areaServed": "RU",
   "serviceType": "Коучинг",
+  "priceRange": "10 000 – 75 000 ₽",
   "founder": { "@type": "Person", "name": "Эльвира Климанова", "jobTitle": "Персональный коуч" },
-  "knowsAbout": ["коучинг", "масштабирование бизнеса", "работа с внутренними блоками", "финансовые блоки"]
+  "knowsAbout": ["коучинг", "масштабирование бизнеса", "работа с внутренними блоками", "финансовые блоки"],
+  "makesOffer": [
+    { "@type": "Offer", "name": "Онлайн-сессия, 60 минут", "price": "10000", "priceCurrency": "RUB", "url": "https://klimanova-inside.ru/#pricing" },
+    { "@type": "Offer", "name": "Оффлайн-сессия, 90 минут", "price": "18000", "priceCurrency": "RUB", "url": "https://klimanova-inside.ru/#pricing" },
+    { "@type": "Offer", "name": "Пакет 5 сессий онлайн", "price": "42000", "priceCurrency": "RUB", "url": "https://klimanova-inside.ru/#pricing" },
+    { "@type": "Offer", "name": "Пакет 5 сессий оффлайн", "price": "75000", "priceCurrency": "RUB", "url": "https://klimanova-inside.ru/#pricing" }
+  ]
 }
 </script>
 </body>
